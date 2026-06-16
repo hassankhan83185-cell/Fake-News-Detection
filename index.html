@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Truth Lens AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="background-grid"></div>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🛡 TruthLens
+    </div>
+
+    <button class="try-btn">
+        Try it →
+    </button>
+
+</nav>
+
+
+<section class="hero">
+
+    <div class="badge">
+        ✨ Powered by NLP & Machine Learning
+    </div>
+
+    <h1>
+        Detect fake news <br>
+        in seconds.
+    </h1>
+
+    <p>
+        Paste any article, headline, or social post.
+        TruthLens analyzes language patterns and predicts
+        whether the content is trustworthy.
+    </p>
+
+    <div class="hero-buttons">
+
+        <button class="primary-btn">
+            Analyze a story
+        </button>
+
+        <button class="secondary-btn">
+            See the pipeline
+        </button>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div>
+            <h2>94%</h2>
+            <span>MODEL ACCURACY</span>
+        </div>
+
+        <div>
+            <h2>&lt;1s</h2>
+            <span>AVG LATENCY</span>
+        </div>
+
+        <div>
+            <h2>NLP</h2>
+            <span>DISTILBERT</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="detector-section">
+
+<div class="detector-card floating-card">
+
+        <div class="detector-top">
+
+            <h2>🧠 Live Detector</h2>
+
+            <span>Demo • classifier mock</span>
+
+        </div>
+
+
+        <form id="newsForm"
+      action="/predict"
+      method="POST">
+
+            <textarea
+            name="news"
+            placeholder="Paste a news headline, article snippet, or social media post..."></textarea>
+
+
+            <div class="sample-row">
+
+                <div class="samples">
+
+                    <button type="button">
+                        Sample 1
+                    </button>
+
+                    <button type="button">
+                        Sample 2
+                    </button>
+
+                </div>
+
+                <span class="clear-btn">
+                    Clear
+                </span>
+
+            </div>
+
+
+            <button class="analyze-btn" type="submit">
+
+                ⚡ Analyze
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<section class="pipeline-section">
+
+    <h1>How it works</h1>
+
+    <p class="pipeline-subtitle">
+        A modern NLP + Deep Learning pipeline behind the scenes.
+    </p>
+
+
+    <div class="pipeline-container">
+
+        <!-- STEP 1 -->
+
+        <div class="pipeline-card">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h2>Input Text</h2>
+
+            <p>
+                User submits article, headline,
+                or social media content.
+            </p>
+
+        </div>
+
+
+        <!-- STEP 2 -->
+
+        <div class="pipeline-card">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h2>Preprocessing</h2>
+
+            <p>
+                Cleaning, tokenization,
+                lowercase conversion,
+                and stopword handling.
+            </p>
+
+        </div>
+
+
+        <!-- STEP 3 -->
+
+        <div class="pipeline-card">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h2>DistilBERT Analysis</h2>
+
+            <p>
+                Transformer-based NLP model
+                extracts contextual language patterns.
+            </p>
+
+        </div>
+
+
+        <!-- STEP 4 -->
+
+        <div class="pipeline-card">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <h2>Prediction</h2>
+
+            <p>
+                Model predicts whether
+                the news is Fake or Real
+                with confidence score.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="tech-section">
+
+    <h1>Technology Stack</h1>
+
+    <p class="tech-subtitle">
+        Built using modern AI + NLP technologies.
+    </p>
+
+
+    <div class="tech-grid">
+
+        <div class="tech-card">Python</div>
+        <div class="tech-card">Flask</div>
+
+        <div class="tech-card">DistilBERT</div>
+        <div class="tech-card">Transformers</div>
+
+        <div class="tech-card">PyTorch</div>
+        <div class="tech-card">NLP</div>
+
+        <div class="tech-card">Kaggle Dataset</div>
+        <div class="tech-card">Machine Learning</div>
+
+    </div>
+
+
+    <a href="#" class="github-btn">
+        🔗 View on GitHub
+    </a>
+
+
+    <div class="code-box">
+
+<pre>
+from transformers import pipeline
+
+classifier = pipeline(
+    "text-classification",
+    model="distilbert-base-uncased"
+)
+
+result = classifier(news_text)
+print(result)
+</pre>
+
+    </div>
+
+</section>
+
+<footer class="developer-footer">
+
+    <img src="{{ url_for('static', filename='images/profile.jpg') }}"
+         alt="Developer">
+
+    <div>
+
+        <p>Developed By</p>
+
+        <h3>
+            Sajid Ahshan <br>
+            & Mohad Hassan
+        </h3>
+
+    </div>
+
+</footer>
+<script>
+
+const form =
+document.getElementById('newsForm');
+
+form.addEventListener('submit', function(e){
+
+    e.preventDefault();
+
+    const overlay =
+    document.getElementById('analysisOverlay');
+
+    overlay.style.display = 'flex';
+
+
+    // 5 second cinematic delay
+
+    setTimeout(() => {
+
+        form.submit();
+
+    }, 5000);
+
+});
+
+</script>
+
+<!-- CINEMATIC ANALYSIS OVERLAY -->
+
+<div class="analysis-overlay" id="analysisOverlay">
+
+    <div class="stars"></div>
+
+    <div class="analysis-content">
+
+        <div class="planet"></div>
+
+        <h1>
+            Traversing Timelines...
+        </h1>
+
+        <p>
+            DistilBERT AI is analyzing truth patterns
+            across historical and futuristic information streams.
+        </p>
+
+    </div>
+
+</div>
+<script>
+
+const cards = document.querySelectorAll(
+'.pipeline-card, .tech-card, .detector-card'
+);
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('show');
+
+        }
+
+    });
+
+});
+
+cards.forEach(card => observer.observe(card));
+
+</script>
+</body>
+
+</html>
